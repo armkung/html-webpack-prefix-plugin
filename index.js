@@ -65,7 +65,7 @@ HtmlWebpackPrefixPlugin.prototype.addPrefix = function ( html, options ){
         links.reverse();
         html = [html];
         links.forEach(function(link) {
-            var value = url.resolve(options.prefix, link.value);
+            var value = options.prefix + link.value;
 
             var x = html.pop();
             html.push(x.substr(link.start + link.length));

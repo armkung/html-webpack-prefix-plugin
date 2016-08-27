@@ -22,7 +22,7 @@ HtmlWebpackPrefixPlugin.prototype.apply = function (compiler) {
 
 HtmlWebpackPrefixPlugin.prototype.addPrefix = function ( html, options ){
     if(options.prefix){
-        var attrs = ["img:src", "img:srcset", "img:data-src", "script:src", "link:href"];
+        var attrs = ["script:src", "link:href"];
         if(Object.prototype.toString.call(options.attrs) === '[object Object]'){
             for(var i in options.attrs){
                 var index = attrs.indexOf(options.attrs[i]);
@@ -65,7 +65,6 @@ HtmlWebpackPrefixPlugin.prototype.addPrefix = function ( html, options ){
         links.reverse();
         html = [html];
         links.forEach(function(link) {
-            if (/^http[s]?:\/\/|^\/\//i.test(link.value)) return;
             var value = url.resolve(options.prefix, link.value);
 
             var x = html.pop();
